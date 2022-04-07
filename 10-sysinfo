@@ -1,0 +1,27 @@
+#!/bin/sh
+
+user=$(whoami)
+date=`date`
+load=`cat /proc/loadavg | awk '{print $1" (1minute) "$2" (5minutes) "$3" (15minutes)"}'`
+root_usage=`df -h / | awk '/\// {print $(NF-1)}'`
+root_used=`df -h / | awk '/\// {print $(NF-2)}'`
+root_total=`df -h / | awk '/\// {print $(NF-3)}'`
+swap_usage=`free -m | awk '/Swap/ { printf("%3.1f%%", "exit !$2;$3/$2*100") }'`
+users=` w -s | grep -v WHAT | grep -v "load average" | wc -l`
+time=`uptime | grep -ohe 'up .*' | sed 's/,/\ hours/g' | awk '{ printf $2" "$3 }'`
+processes_total=`ps aux | wc -l`
+processes_user=`ps -U ${user} u | wc -l`
+ip=$(ifconfig eth0 | egrep -o 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'  | cut -d' ' -f2)
+lastlog=`lastlog -u ${user} | grep -v Latest |  awk '{ printf $5" "$6" "$7" "$8" "$9" from "$3 }')`
+os=`cat /etc/*-release | egrep "PRETTY_NAME" | cut -d = -f 2 | tr -d '"'`
+
+echo "\033[1;37mSystem information vom: $date\033[0m"
+echo "\033[1;31mBetriebssystem............ \033[1;34m" $os
+echo "\033[1;31mSystem Auslastung......... \033[1;34m" $load
+echo "\033[1;31mSystem IP................. \033[1;34m" $ip
+echo "\033[1;31mOnline seit............... \033[1;34m" "$time"
+echo "\033[1;31mAuslastung auf /.......... \033[1;34m" $root_used"/"$root_total "("$root_usage")"
+echo "\033[1;31mSwap Auslastung........... \033[1;34m" $swap_usage
+echo "\033[1;31mProzesse.................. \033[1;34m" $processes_total "total," $processes_user "yours"
+echo "\033[1;31mSSH Sessions.............. \033[1;34m" $users "open sessions"
+echo "\033[1;31mLetzer SSH Login.......... \033[1;34m" $lastlog
