@@ -1,0 +1,13 @@
+#!/bin/sh
+
+hs=$(hostname)
+system_admin='grEEni'
+
+printf "\n"
+figlet demeter
+printf "\n"
+printf "Wilkommen auf "$hs
+printf "\n"
+printf "Immer an die Regeln denken! Bei Fragen an $system_admin wenden."
+printf "\n"
+printf "\n"
