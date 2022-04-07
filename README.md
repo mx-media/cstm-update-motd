@@ -1,3 +1,5 @@
+![Screenshot_2](https://user-images.githubusercontent.com/101652840/162251429-8a9f8c39-64b3-49c0-b81e-cdebb02c300e.png)
+
 # cstm-update-motd infos
 
 `author: grEEni`  
