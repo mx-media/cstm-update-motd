@@ -42,3 +42,29 @@ cd /etc/update-motd.d
 ```shell
 git clone https://github.com/mx-media/cstm-update-motd.git
 ```
+
+3.) edit your `/etc/pam.d/sshd`
+
+```shell
+nano /etc/pam.d/sshd
+```
+
+edit this part
+
+```bash
+# Print the message of the day upon successful login.
+# This includes a dynamically generated part from /run/motd.dynamic
+# and a static (admin-editable) part from /etc/motd.
+session    optional     pam_motd.so  motd=/run/motd.dynamic
+session    optional     pam_motd.so noupdate
+```
+
+to
+
+```bash
+# Print the message of the day upon successful login.
+# This includes a dynamically generated part from /run/motd.dynamic
+# and a static (admin-editable) part from /etc/motd.
+session    optional     pam_motd.so  motd=/run/motd.dynamic
+#session    optional     pam_motd.so noupdate
+```
