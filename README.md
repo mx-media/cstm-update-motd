@@ -1,4 +1,4 @@
-
+![Screenshot_2](https://user-images.githubusercontent.com/101652840/162251929-041d8ab7-8402-48bc-b866-e01df8ccd950.png)
 
 # cstm-update-motd infos
 
