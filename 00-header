@@ -1,10 +1,11 @@
 #!/bin/sh
 
+figlet='demeter'
 hs=$(hostname)
 system_admin='grEEni'
 
 printf "\n"
-figlet demeter
+figlet $figlet
 printf "\n"
 printf "Wilkommen auf "$hs
 printf "\n"
