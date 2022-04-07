@@ -8,10 +8,31 @@ Feel free to copy and modify ;)
 
 # cstm-update-motd installation
 
-1.) ap
+1.) needed depencys and tools
 
 ```shell
-public static void printHelloWorld() {
-	System.out.println("Hello World");
-}
+apt-get update && apt-get upgrade
+```
+
+```shell
+apt-get install gawk wget curl figlet git
+```
+
+Check your git version
+
+```shell
+git --version
+```
+
+Output something like this
+
+```shell
+Output
+git version 2.20.1
+```
+
+2.) git clone 
+
+```shell
+git clone blabla
 ```
