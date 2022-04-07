@@ -33,6 +33,12 @@ git version 2.20.1
 
 2.) git clone 
 
+Change to your update-motd.d directory
+
 ```shell
-git clone blabla
+cd /etc/update-motd.d
+```
+
+```shell
+git clone https://github.com/mx-media/cstm-update-motd.git
 ```
